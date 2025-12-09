@@ -8,7 +8,29 @@ const createToken = (id) => {
 }
 
 const loginUser = async (req, res) => {
+  try {
+    const {email, password} = req.body;
+    
+    const user = await userModel.findOne({email});
 
+    if(!user){
+      return res.json({success: false, message: "Người dùng không tồn tại"})
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if(isMatch){
+      const token = createToken(user._id);
+      res.json({success: true, token});
+    }
+    else{
+      return res.json({success: false, message: "Mật khẩu không đúng"})
+    }
+
+  } catch (error) {
+    console.log(error);
+    res.json({success: false, message: error.message});
+  }
 }
 
 const registerUser = async (req, res) => {
@@ -45,7 +67,7 @@ const registerUser = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.json({success: false, message: error,message});
+    res.json({success: false, message: error.message});
   }
 }
 
