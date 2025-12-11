@@ -57,7 +57,7 @@ const getAllProducts = async (req, res) => {
 
 const removeProduct = async (req, res) => {
     try {
-        await productModel.findByIdAndDelete(req.params.id);
+        await productModel.findByIdAndDelete(req.body.id);
         res.json({success: true, message: "Xoa san pham thanh cong"})
     } catch (error) {
         console.log(error);

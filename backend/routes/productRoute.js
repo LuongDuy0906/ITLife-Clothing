@@ -12,7 +12,7 @@ productRouter.post('/', adminAuth, upload.fields([
     {name: 'image4', maxCount: 1},
 ]), addProduct);
 
-productRouter.delete('/:id', adminAuth, removeProduct);
+productRouter.post('/remove', adminAuth, removeProduct);
 productRouter.post('/singleProduct', adminAuth, getProduct);
 productRouter.get('/', adminAuth, getAllProducts);
 
