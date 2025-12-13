@@ -4,12 +4,12 @@ const adminAuth = async (req, res, next) => {
     try {
         const {token} = req.headers;
         if (!token) {
-            return res.json({success: false, message: "Tai khoan khong duoc cap quyen, hay dang nhap lai"});
+            return res.json({success: false, message: "Tài khoản không được cấp quyền, hãy đăng nhập lại"});
         }
 
         const token_decode = jwt.verify(token, process.env.JWT_SECRET);
         if (token_decode !== process.env.ADMIN_EMAIL + process.env.ADMIN_PASSWORD) {
-            return res.json({success: false, message: "Tai khoan khong duoc cap quyen, hay dang nhap lai"});
+            return res.json({success: false, message: "Tài khoản không được cấp quyền, hãy đăng nhập lại"});
         }
 
         next();

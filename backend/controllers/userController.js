@@ -40,15 +40,15 @@ const registerUser = async (req, res) => {
     // kiem tra email da ton tai hay chua
     const exists = await userModel.findOne({email});
     if(exists){
-      return res.json({success: false, message: "Nguoi dung da ton tai!"});
+      return res.json({success: false, message: "Người dùng đã tồn tại!"});
     }
     
     // Xac thuc email va mat khau
     if(!validator.isEmail(email)){
-      return res.json({success: false, message: "Email khong hop le!"});
+      return res.json({success: false, message: "Email không hợp lệ!"});
     }
     if(password.length < 8){
-      return res.json({success: false, message: "Mat khau toi thieu la 8 ky tu!"});
+      return res.json({success: false, message: "Mật khẩu tối thiểu phải có 8 ký tự!"});
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -79,7 +79,7 @@ const adminLogin = async (req, res) => {
       res.json({success: true, token});
     }
     else{
-      res.json({success: false, message: "Tai khoan hoac mat khau khong dung"});
+      res.json({success: false, message: "Tài khoản hoặc mật khẩu không đúng"});
     }
   } catch (error) {
     console.log(error);

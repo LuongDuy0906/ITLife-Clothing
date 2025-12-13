@@ -38,7 +38,7 @@ const addProduct = async (req, res) => {
         const product = new productModel(productData);
         await product.save();
 
-        res.json({success: true, message: "Them san pham thanh cong"});
+        res.json({success: true, message: "Thêm sản phẩm thành công"});
     } catch (error) {
         console.log(error);
         res.json({success: false, message: error.message});
@@ -58,7 +58,7 @@ const getAllProducts = async (req, res) => {
 const removeProduct = async (req, res) => {
     try {
         await productModel.findByIdAndDelete(req.body.id);
-        res.json({success: true, message: "Xoa san pham thanh cong"})
+        res.json({success: true, message: "Xóa sản phẩm thành công"})
     } catch (error) {
         console.log(error);
         res.json({success: false, message: error.message});
