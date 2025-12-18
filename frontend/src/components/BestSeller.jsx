@@ -10,12 +10,12 @@ const BestSeller = () => {
     useEffect(() => {
         const bestProduct = products.filter((item) => (item.bestseller));
         setBetSeller(bestProduct.slice(0, 5));
-    }, [])
+    }, [products])
 
     return (
         <div className='my-10'>
             <div className='text-center text-3xl py-8'>
-                <Title text1={'Best'} text2={'Sellers'}/>
+                <Title text1={'Bán'} text2={'chạy nhất'}/>
                 <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
                     Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản
                 </p>

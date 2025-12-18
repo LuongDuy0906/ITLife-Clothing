@@ -14,6 +14,6 @@ productRouter.post('/add', adminAuth, upload.fields([
 
 productRouter.post('/remove', adminAuth, removeProduct);
 productRouter.post('/singleProduct', adminAuth, getProduct);
-productRouter.get('/', adminAuth, getAllProducts);
+productRouter.get('/', getAllProducts);
 
 export default productRouter;

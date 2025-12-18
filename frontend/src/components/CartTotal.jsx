@@ -13,17 +13,17 @@ const CartTotal = () => {
       <div className='flex flex-col gap-2 mt-2 text-sm'>
         <div className='flex justify-between'>
           <p>Tổng tiền</p>
-          <p>{currency} {getCartAmount()}.00</p>
+          <p>{getCartAmount().toLocaleString()}{currency}</p>
         </div>
         <hr />
         <div className='flex justify-between'>
           <p>Phí ship</p>
-          <p>{currency} {delivery_fee}</p>
+          <p>{delivery_fee.toLocaleString()}{currency} </p>
         </div>
         <hr />
         <div className='flex justify-between'>
           <b>Thành tiền</b>
-          <b>{currency} {getCartAmount() === 0 ? 0 : getCartAmount() + delivery_fee}</b>
+          <b>{getCartAmount() === 0 ? 0 : (getCartAmount() + delivery_fee).toLocaleString()}{currency}</b>
         </div>
       </div>
     </div>
